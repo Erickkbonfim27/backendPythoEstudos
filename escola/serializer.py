@@ -13,11 +13,11 @@ class EstudanteSerializer(serializers.ModelSerializer):
     #validator geral com os dados d validator.py
     def validate(self, dados):
         if cpf_invalido(dados['cpf']):
-            raise serializers.ValidationError({'cpf':"O CPF deve ter 11 digitos!"})
+            raise serializers.ValidationError({'cpf':"O CPF deve ter um valor válido"})
         if nome_invalido(dados['nome']):
             raise serializers.ValidationError({'nome':"O Nome deve ter somente caracteres alfa numericos!"})
         if numero_celular_invalido(dados['numero_celular']):
-            raise serializers.ValidationError({'numero_celular':"O numero de celular precisa ter 13 digitos"})
+            raise serializers.ValidationError({'numero_celular':"O numero de celular precisa seguir o modelo: 86 99999-9999 (respeitando traços e espaços)"})
         return dados
 
 
