@@ -31,4 +31,5 @@ sqlparse==0.5.3
 typing_extensions==4.12.2
 tzdata==2024.1
 urllib3==2.2.3
+validate-docbr==1.10.0
 zipp==3.20.2
