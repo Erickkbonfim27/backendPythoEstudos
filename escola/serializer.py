@@ -5,7 +5,6 @@ from escola.models import Estudante, Curso, Matricula
 from escola.validators import cpf_invalido, nome_invalido, numero_celular_invalido
 
 class EstudanteSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Estudante
         fields = "__all__"
@@ -50,3 +49,9 @@ class ListaMatriculasCursoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
         fields = ['estudante_nome',]
+
+
+class EstudanteSerializerV2(serializers.ModelSerializer):
+    class Meta:
+        model = Estudante
+        fields = ['id', 'nome', 'email', 'numero_celular']
