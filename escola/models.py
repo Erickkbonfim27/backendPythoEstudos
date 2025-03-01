@@ -22,7 +22,7 @@ class Curso(models.Model):
         ("A", "Avancado"),
     }
 
-    codigo = models.CharField(max_length=10, unique=True, validators=[MinLengthValidator(3)] ) #esquema pra colocar validações personalizadas e as do django também, legal isso aqui
+    codigo = models.CharField(max_length=10, unique=True, validators=[MinLengthValidator(3)] ) #esquema pra colocar validações personalizadas e as do django também, legal isso aqui, além daqui da pra faer validações pelo serializer
     descricao = models.CharField(blank=False, max_length=255)
     nivel = models.CharField(max_length=1, blank=False, null=False, choices = NIVEL, default="B")
 
