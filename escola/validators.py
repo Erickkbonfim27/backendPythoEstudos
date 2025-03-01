@@ -1,3 +1,5 @@
+import re
+
 def cpf_invalido(cpf):
     return len(cpf) != 11
 
