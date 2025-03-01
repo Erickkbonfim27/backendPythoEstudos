@@ -18,8 +18,8 @@ def criando_pessoas(quantidade_de_pessoas):
         email = email.replace(' ', '')
         cpf = cpf.generate()
         data_nascimento = fake.date_of_birth(minimum_age=18, maximum_age=30)  # Gera uma data de nascimento aleatória entre 18 e 30 anos
-        celular = "{} 9{}-{}".format(random.randrange(10, 89), random.randrange(4000, 9999), random.randrange(4000, 9999))
-        p = Estudante(nome=nome, email=email, cpf=cpf, data_nascimento=data_nascimento, celular=celular)
+        numero_celular = "{} 9{}-{}".format(random.randrange(10, 89), random.randrange(4000, 9999), random.randrange(4000, 9999))
+        p = Estudante(nome=nome, email=email, cpf=cpf, data_nascimento=data_nascimento, numero_celular=numero_celular)
         p.save()
 
 criando_pessoas(50)
