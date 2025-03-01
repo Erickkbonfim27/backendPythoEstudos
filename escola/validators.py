@@ -7,7 +7,10 @@ def nome_invalido(nome):
     return not nome.isalpha()
 
 def numero_celular_invalido(numero_celular):
-    return len(numero_celular) != 13
+    modelo = r'\b\d{2} \d{5}-\d{4}\b'
+    is_num_valid = re.findall(modelo, numero_celular)
+    print(is_num_valid)
+    return not is_num_valid
 
 
 """
