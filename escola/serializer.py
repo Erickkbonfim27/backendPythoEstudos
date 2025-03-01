@@ -2,7 +2,7 @@ from curses.ascii import isalpha
 
 from rest_framework import serializers
 from escola.models import Estudante, Curso, Matricula
-
+from escola.validators import cpf_invalido, nome_invalido, numero_celular_invalido
 
 class EstudanteSerializer(serializers.ModelSerializer):
 
@@ -12,14 +12,14 @@ class EstudanteSerializer(serializers.ModelSerializer):
 
 #validator geral
     def validate(self, dados):
-        if len(dados['cpf']) != 11:
-            raise serializers.ValidationError({'cpf':"O CPF deve ter 11 digitos"}) #aqui informamos qual o campo no formato tupla ({'campo':"mensagem"}) as aspas precisam ser esse formato
-        if not dados['nome'].isalpha():
-            raise serializers.ValidationError({'nome':"O nome não deve ter caracteres especiais!"})
-        if len(dados['numero_celular']) != 13:
-            raise serializers.ValidationError({'numero_celular':"O celular precisa ter 13 digitos"})
+        if cpf_invalido(dados['cpf']):
+            raise serializers.ValidationError({'cpf':"O CPF deve ter 11 digitos!"})
+        if nome_invalido(dados['nome']):
+            raise serializers.ValidationError({'nome':"O Nome deve ter somente caracteres alfa numericos!"})
+        if numero_celular_invalido(dados['numero_celular']):
+            raise serializers.ValidationError({'numero_celular':"O numero de celular precisa ter 13 digitos"})
         return dados
-    
+
 """
 #validators individuais
     def validate_cpf(self, cpf):
