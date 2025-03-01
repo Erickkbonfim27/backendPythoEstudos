@@ -1,11 +1,11 @@
 from django.db import models
 from django.db.models import CASCADE
-
+from django.core.validators import MinLengthValidator
 
 class Estudante(models.Model):
     nome = models.CharField(max_length=255)
     email = models.EmailField(blank=False, max_length=50)
-    cpf = models.CharField(blank= False, max_length=11)
+    cpf = models.CharField(blank= False, max_length=11, unique=True)
     data_nascimento = models.DateField()
     numero_celular = models.CharField(max_length=14)
 
@@ -22,7 +22,7 @@ class Curso(models.Model):
         ("A", "Avancado"),
     }
 
-    codigo = models.CharField(max_length=10)
+    codigo = models.CharField(max_length=10, unique=True, validators=[MinLengthValidator(3)] ) #esquema pra colocar validações personalizadas e as do django também, legal isso aqui
     descricao = models.CharField(blank=False, max_length=255)
     nivel = models.CharField(max_length=1, blank=False, null=False, choices = NIVEL, default="B")
 
